@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+ <html>
+    <head>
+        <title>Navbar and Dropdown</title>
+        <style>
+           body {
+             position: relative;
+             background: rgb(88, 4, 97);
+             font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+           }
+           #nav > ul, li, .link {
+             list-style-type: none;
+             text-decoration: none;
+             color: white;
+             display: inline;
+             padding: 16px;
+             font-size: 23px;
+           }
+           .link:hover {
+             font-size: 28px;
+           }
+           #dropdown {
+             background: rgba(39, 2, 39, 0.935);
+             box-shadow: 1px 0 1px 1px rgba(65, 3, 65, 0.935), -1px 0 1px 1px rgba(53, 3, 53, 0.935);
+             position: absolute;
+             left: 6%;
+             top: 130%;
+             width: 240px;
+             height: 276px;
+           }
+           .item {
+             display: block;
+             padding: 16px;
+             color: white;
+             font-size: 20px;
+             text-decoration: none;
+           }
+           .item:hover {
+             background: white;
+             color: black;
+           }
+           .clear {
+             display: none;
+           }
+           .drop {
+             display: block;
+           }
+        </style>
+    </head>
+    <body>
+       <div id="nav">
+          <ul>
+            <li><a class="link" href="#">Home</a></li>
+            <li><a class="link" href="#">Service</a></li>
+            <li><a class="link" href="#">About</a></li>
+            <li><a class="link" href="#">Contact</a></li>
+          </ul>
+       </div>
+       <div id="dropdown"></div>
+       <script>
+          let link = ['link-1','link-2','link-3','link-4','link-5'];
+          let link_name = ['service-1','service-2','service-3','service-4','service-5'];
+          let click = document.querySelectorAll('.link')[1];
+
+          for(let item = 0; item < link.length; item++) {
+             let create = document.createElement('a');
+             document.querySelector('#dropdown').classList.toggle('clear');
+
+             function Dropdown() {
+
+                create.setAttribute('href', link[item]);
+                create.textContent = link_name[item];
+                create.className = 'item';
+                create.target = '_blank';
+                document.querySelector('#dropdown').appendChild(create);
+                document.querySelector('#dropdown').classList.toggle('drop');
+             }
+             if(click) {
+               click.addEventListener('click', Dropdown);
+             }
+          }
+       </script>
+    </body>
+ </html>
